@@ -1,0 +1,210 @@
+/* Estilos globales */
+body {
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fafafa;
+  color: #333;
+}
+
+/* Contenedores */
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+h1,
+h3 {
+  text-align: center;
+  color: #3c008c;
+  margin-bottom: 1.5rem;
+}
+
+/* Formulario */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+input,
+select,
+textarea,
+button {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  font-size: 0.95rem;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  background: #3c008c;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #5c00e9;
+}
+
+button.cancelar {
+  background: #999;
+}
+
+button.cancelar:hover {
+  background: #777;
+}
+
+/* Fechas (dos inputs en fila) */
+.fechas {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Tabla */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background: white;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.table th {
+  background: #f4f4f9;
+  font-weight: 600;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+/* Alertas */
+.alert {
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.alert-danger {
+  background: #f8d7da;
+  color: #842029;
+}
+
+.alert-success {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+/* Gráfico chart */
+.grafico-container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #f8f8ff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Boton */
+button.btn {
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.4rem;
+  font-size: 0.85rem;
+}
+
+/* Campos inválidos (ya lo tienes) */
+.is-invalid {
+  border: 1.5px solid #e74c3c !important;
+  background-color: #fff6f6 !important;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+/* Cuando se corrige el campo, vuelve a la normalidad */
+input:not(.is-invalid),
+select:not(.is-invalid),
+textarea:not(.is-invalid) {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+/* Al enfocar campos válidos */
+input:focus:not(.is-invalid),
+select:focus:not(.is-invalid),
+textarea:focus:not(.is-invalid) {
+  border-color: #3c008c;
+  box-shadow: 0 0 4px rgba(60, 0, 140, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    padding: 0.5rem;
+  }
+
+  .form {
+    padding: 0.8rem;
+  }
+
+  input,
+  textarea,
+  button {
+    font-size: 0.9rem;
+  }
+
+  .fechas {
+    flex-direction: column;
+  }
+
+  .table th,
+  .table td {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+
+  .grafico-container {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  button {
+    font-size: 0.85rem;
+  }
+
+  .table {
+    font-size: 0.85rem;
+  }
+}
