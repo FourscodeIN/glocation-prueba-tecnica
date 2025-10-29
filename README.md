@@ -22,34 +22,54 @@ IA integrada usando OpenAI (API). Documentación de la API con Swagger. Opcional
 ## Estructura del proyecto
 ```markdown
 /backend
+  ├─ node_modules/
   ├─ src/
   │   ├─ config/
+  │   │   └─ db.js
   │   ├─ controllers/
+  │   │   └─ proyecto.controller.js
   │   ├─ docs/
+  │   │   └─ swagger.js
   │   ├─ middelwares/
+  │   │   └─ validarProyecto.js
   │   ├─ models/
+  │   │   └─ Proyecto.js
   │   ├─ routes/
+  │   │   └─ proyecto.routes.js
   │   ├─ services/
+  │   │   └─ ia.service.js
   │   └─ app.js
   ├─ package.json
   └─ .env
   └─ Dockerfile
   └─ server.js
 /frontend
+  ├─ node_modules/
   ├─ src/
   │  ├─ assets/
+  │      └─ main.css
   │  ├─ components/
+  │      └─ GraficoProyectos.vue
+  │      └─ ProyectoForm.vue
+  │      └─ ProyectoTable.vue
   │  ├─ composables/
+  │      └─ useGraficoProyectos.js
+  │      └─ useProyectoForm.js
+  │      └─ useProyecto Table.js
   │  ├─ router/
+  │      └─ index.js
   │  ├─ views/
+  │      └─ HomeView.vue
+  │      └─ ProyectosView.vue
   │  ├─ services/
+  │      └─ api.js
+  │      └─ proyectosService.js
   │  └─ App.vue.js
   │  └─ main.js
   ├─ package.json
   └─ .env
   └─ Dockerfile
   └─ index.html
-  └─ .env
 docker-compose.yml
 README.md
 ```
@@ -93,8 +113,7 @@ npm install
 
 CREATE DATABASE glocation_db;
 ```
-Ejecuta migraciones / sincroniza modelos (según tu setup Sequelize)
-Si usas sincronización automática en app.js, basta con iniciar el servidor.
+Con la sincronización automática en app.js, basta con iniciar el servidor.
 ```
 # Levanta el servidor
 npm run dev
@@ -113,12 +132,30 @@ cd frontend
 # Instala dependencias
 npm install
 ```
-Configura la URL base de la API en src/services/api.js (por ejemplo http://localhost:4000/api).
+Configura la URL base de la API en src/services/api.js con la VITE_API_URL y en el .env coloca (por ejemplo http://localhost:4000/api).
+```
+# .env
+VITE_API_URL=http://localhost:4000/api
+```
 ```
 # Levanta el frontend (Vite / dev server)
 npm run dev
 ```
 Normalmente disponible en http://localhost:5173 (o el puerto que muestre Vite).
+
+---
+
+## Ejecución con Docker Desktop
+```
+# Abre Docker Desktop y certificamos wls2 tanto enable como en Ubuntu
+
+# Posiciónate en la carpeta raiz del proyecto
+cd glocation-prueba-tecnica
+
+# Ejecuta
+docker compose build
+docker compose up
+```
 
 ---
 
@@ -219,9 +256,10 @@ Ajusta Dockerfile en cada carpeta para exponer los puertos y comandos correctos.
 
 ## Decisiones técnicas y justificación
 
-Node.js + Express: facilidad de integración, ecosistema maduro.
-Sequelize: ORM probado para PostgreSQL; facilidad para migraciones y sincronización.
-OpenAI: servicio estable para generación de texto (mejor MX de resultados y menos problemas de cambios de SDK).
-Vue 3 (Vite): frontend ligero y reactividad simple; componentes para formulario, tabla y gráfico.
-Swagger (OpenAPI): permite documentar y probar endpoints rápidamente.
-Docker Compose (opcional): facilita reproducibilidad del entorno con Postgres + backend + frontend.
+> Node.js + Express: facilidad de integración, ecosistema maduro.
+> Sequelize: ORM probado para PostgreSQL; facilidad para migraciones y sincronización.
+> OpenAI: servicio estable para generación de texto (mejor MX de resultados y menos problemas de cambios de SDK).
+> Vue 3 (Vite): frontend ligero y reactividad simple; componentes para formulario, tabla y gráfico.
+> Swagger (OpenAPI): permite documentar y probar endpoints rápidamente.
+> Docker Compose (opcional): facilita reproducibilidad del entorno con Postgres + backend + frontend.
+
